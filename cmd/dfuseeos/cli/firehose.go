@@ -92,10 +92,7 @@ func init() {
 			}
 
 			firehoseGRPCListenAddr := viper.GetString("firehose-grpc-listen-addr")
-			if !strings.Contains(firehoseGRPCListenAddr, "*") {
-				return nil, fmt.Errorf("unsupported value for firehose-grpc-listen-addr. Address must include '*' character to indicate TLS with snakeoil (insecure) certificate")
 
-			}
 			return firehoseApp.New(appLogger, &firehoseApp.Config{
 				BlockStoreURLs:          firehoseBlocksStoreURLs,
 				BlockStreamAddr:         blockstreamAddr,
